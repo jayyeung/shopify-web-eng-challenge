@@ -2,7 +2,10 @@
   <div class="entry">
     <div class="entry__title">
       <div @click="onFavourite">
-        <div><img class="entry__star" src="../assets/icon-star.svg"/></div>
+        <div class="entry__star" 
+          :class="{'entry__star--fave': this.entry.favourite}">
+          <p>Tests</p>
+        </div>
         <p class="u-mh-3">{{ entry.title }}</p>
       </div>
     </div>
@@ -16,17 +19,10 @@
 export default {
   name: "WasteEntry",
   props: { entry: Object },
-  data: function() {
-    return {
-      favourite: false
-    };
-  },
-  mounted() {
-  },
   methods: {
-    onFavourite() { 
-      // {...this.entry, favourite: !this.entry.favourite});
-      // this.$emit('favourite', entry);
+    onFavourite() {
+      const faveVal = !this.entry.favourite;
+      this.$emit('favourite', faveVal, this.entry);
     }
   }
 }
@@ -46,7 +42,6 @@ export default {
   &__desc { flex: 0.9; }
 }
 
-.entry--favourited {
-  .entry__star { color: color-get(primary); }
-}
+.entry__star { color: color-get(grey); }
+.entry__star--fave { color: color-get(primary); }
 </style>

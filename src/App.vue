@@ -10,7 +10,8 @@
       <div class="waste-entries">
         <waste-entry 
           v-for="(res, i) in searchRes" 
-          :entry="res" :key='`result-${i}`'
+          :entry="res" :key="`result-${i}`"
+          @favourite="handleFavourite"
         />
       </div>
     </div> 
@@ -21,6 +22,11 @@
         <h2>Favourites</h2>
 
         <div class="waste-entries u-mt-4">
+          <waste-entry
+            v-for="(res, i) in favourites"
+            :entry="res" :key="`faves-${i}`"
+            @favourite="handleFavourite"
+          />
         </div>
       </div>
     </div>
@@ -28,6 +34,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import decodeHTML from 'unescape';
 
 import Banner from './components/Banner.vue';
@@ -60,12 +67,14 @@ export default {
   },
 
   methods: {
-    formatData(data) {
+    formatEntries(data) {
       data.forEach((ent) => {
         // check if favourite
+        // *Vue.set() is used to detect changes
+        // of object and update the lists*
         if (this.favourites.includes(ent))
-          ent.favourite = true;
-        else ent.favourite = false;
+          Vue.set(ent, "favourite", true);
+        else Vue.set(ent, "favourite", false);
 
         // decode HTML entities on body
         ent.body = decodeHTML(ent.body);
@@ -76,15 +85,24 @@ export default {
     handleSearch(val) {
       if (val === this.query) return;
       if (val === "") this.searchRes = [];
-      else this.searchRes = this.formatData(
+      else this.searchRes = this.formatEntries(
         this.apiData.filter((ent) => (
           ent.keywords.toLowerCase().includes(val) ||
           ent.title.toLowerCase().includes(val)
         ))
       );
-      this.query = val;
+      this.query = val; 
     },
 
+    handleFavourite(val, ent) {
+      if (val) this.favourites.push(ent);
+      else {
+        const i = this.favourites.indexOf(ent);
+        if (i !== -1) this.favourites.splice(i,1);
+      }
+      // update the list to reflect favourites
+      this.searchRes = this.formatEntries(this.searchRes);
+    }
   }
 }
 </script>
