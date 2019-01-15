@@ -1,0 +1,38 @@
+$base-font-size: 30px; 
+$line-height: 1.2;
+
+// resScale: determines what font-size should be at a given width
+$resScale: (
+    300px: 14px,
+    1024px: 20px,
+    1600px: $base-font-size
+);
+
+// Helper func for responsive type
+// uses calc() to linearly scale type for each breakpoint in $resScale
+@mixin fluid-font-size() {
+    $keys: map-keys($resScale);
+    $vals: map-values($resScale);
+
+    @each $k, $v in $resScale {
+        $i: index($resScale, $k $v);
+
+        @if ($i == 1) { & { font-size: $v; } }
+        @if ($i+1 <= length($resScale)) {
+            $k2: nth($keys, $i+1);
+            $v2: nth($vals, $i+1);
+            
+            & { 
+                @media screen and (min-width: $k) {
+                    font-size: calc(
+                        #{$v} + #{unitless($v2 - $v)} *
+                        ((100vw - #{$k}) / #{unitless($k2 - $k)})
+                    );
+                } 
+                @media screen and (min-width: $k2) { font-size: $v2; }
+            } 
+        }
+    }
+} 
+
+@function unitless($val) { @return $val / ($val * 0 + 1); }

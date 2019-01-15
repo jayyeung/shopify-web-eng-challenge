@@ -1,0 +1,23 @@
+/*
+*  Util/Spacing: Generates margin & padding classes based on $spacing settings
+*/
+$dirs: (
+    't': 'top',
+    'b': 'bottom',
+    'l': 'left',
+    'r': 'right'
+);
+
+@each $i, $v in $spacing {
+    // Margin
+    .u-m-#{$i} { margin: $v !important; }
+    @each $j, $dir in $dirs { .u-m#{$j}-#{$i} { margin-#{$dir}: $v !important; } }
+    .u-mh-#{$i} { @extend .u-ml-#{$i}, .u-mr-#{$i}; }
+    .u-mv-#{$i} { @extend .u-mt-#{$i}, .u-mb-#{$i}; }
+
+    // Padding
+    .u-p-#{$i} { padding: $v !important; }
+    @each $j, $dir in $dirs { .u-p#{$j}-#{$i} { padding-#{$dir}: $v !important; } }
+    .u-ph-#{$i} { @extend .u-pl-#{$i}, .u-pr-#{$i}; }
+    .u-pv-#{$i} { @extend .u-pt-#{$i}, .u-pb-#{$i}; }
+} 

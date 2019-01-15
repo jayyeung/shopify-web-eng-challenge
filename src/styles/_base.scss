@@ -1,0 +1,42 @@
+/*
+*  Base : Element-Level Styles
+*/
+@import '~normalize-scss/sass/normalize';
+
+*, *::after, *::before { 
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+:root {
+    @include fluid-font-size;
+    font-family: Arial, sans-serif;
+    line-height: $line-height;
+    color: color-get(black);
+}
+
+ul li:not(:last-child) { 
+    margin-bottom: sp(3); 
+}
+
+input {
+    min-width: 0;
+    padding: sp(2); 
+    font-size: inherit;
+    border: $baseline/2 solid color-get(grey); 
+    border-radius: $baseline;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background: color-get(primary);
+    border: none;
+    border-radius: $baseline;
+    box-shadow: 0 $baseline/2 2px rgba(#000, 0.16);
+
+    transition: background 0.25s;
+    &:hover, &:active { background: darken(color-get(primary), 10); }
+}

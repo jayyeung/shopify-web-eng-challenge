@@ -1,0 +1,12 @@
+$color: (
+    primary: #23995C,
+    secondary: #1d5895,
+
+    black: #333333,
+    grey: #AAAAAA
+);
+
+// Helper function
+@function color-get($col) {
+    @return map-get($color, $col);
+}

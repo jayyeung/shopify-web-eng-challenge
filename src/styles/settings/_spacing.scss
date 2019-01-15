@@ -1,0 +1,13 @@
+$baseline: 0.133rem; // 4px baseline ~= 30 * 0.1333
+$spacing: (
+    1: $baseline,    // 4px
+    2: $baseline*5,  // 20px
+    3: $baseline*7,  // 28px 
+    4: $baseline*10, // 40px 
+    5: $baseline*20, // 80px
+);
+
+// Helper function to get spacing
+@function sp($val) {
+    @return map-get($spacing, $val);
+}
