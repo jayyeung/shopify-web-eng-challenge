@@ -1,30 +1,32 @@
 <template>
   <div class="entry">
     <div class="entry__title">
-      <div><img class="entry__star" src="../assets/icon-star.svg"/></div>
-      <p class="u-mh-3">{{ title }}</p>
+      <div @click="onFavourite">
+        <div><img class="entry__star" src="../assets/icon-star.svg"/></div>
+        <p class="u-mh-3">{{ entry.title }}</p>
+      </div>
     </div>
 
-    <ul class="entry__desc">
-      <slot></slot>
-    </ul>
+    <div class="entry__desc" v-html="entry.body">
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "WasteEntry",
-  props: { title: String },
+  props: { entry: Object },
   data: function() {
     return {
-      favourited: false
+      favourite: false
     };
+  },
+  mounted() {
   },
   methods: {
     onFavourite() { 
-      const favourited = this.data.favourited;
-      this.data.favourited = !favourited;
-      this.$emit('favourite', !favourited);
+      // {...this.entry, favourite: !this.entry.favourite});
+      // this.$emit('favourite', entry);
     }
   }
 }

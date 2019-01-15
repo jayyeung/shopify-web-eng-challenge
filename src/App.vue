@@ -8,12 +8,10 @@
         @search="handleSearch"/>
 
       <div class="waste-entries">
-        <waste-entry v-for="(res, i) in searchRes" 
-          :title="res.title" :key='`result-${i}`'>
-
-          <li>Empty and rinse (if necessary and possible) this item before placing it in the Blue Bin.</li>
-          <li>Any type of black or compostable plastic is not accepted and should be placed in the Garbage Bin.</li>
-        </waste-entry>
+        <waste-entry 
+          v-for="(res, i) in searchRes" 
+          :entry="res" :key='`result-${i}`'
+        />
       </div>
     </div> 
 
@@ -23,17 +21,15 @@
         <h2>Favourites</h2>
 
         <div class="waste-entries u-mt-4">
-          <waste-entry title="Blue Bin (plastic takeout food and produce containers)">
-            <li>Empty and rinse (if necessary and possible) this item before placing it in the Blue Bin.</li>
-            <li>Any type of black or compostable plastic is not accepted and should be placed in the Garbage Bin.</li>
-          </waste-entry>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>  
+<script>
+import decodeHTML from 'unescape';
+
 import Banner from './components/Banner.vue';
 import WasteEntry from './components/WasteEntry.vue';
 import Searchbar from './components/Searchbar.vue';
@@ -64,17 +60,32 @@ export default {
   },
 
   methods: {
+    formatData(data) {
+      data.forEach((ent) => {
+        // check if favourite
+        if (this.favourites.includes(ent))
+          ent.favourite = true;
+        else ent.favourite = false;
+
+        // decode HTML entities on body
+        ent.body = decodeHTML(ent.body);
+      });
+      return data;
+    },
+
     handleSearch(val) {
       if (val === this.query) return;
       if (val === "") this.searchRes = [];
-      else this.searchRes = this.apiData.filter((ent) => (
-        ent.keywords.toLowerCase().includes(val) ||
-        ent.title.toLowerCase().includes(val)
-      ));
+      else this.searchRes = this.formatData(
+        this.apiData.filter((ent) => (
+          ent.keywords.toLowerCase().includes(val) ||
+          ent.title.toLowerCase().includes(val)
+        ))
+      );
       this.query = val;
-    }
-  }
+    },
 
+  }
 }
 </script>
 
