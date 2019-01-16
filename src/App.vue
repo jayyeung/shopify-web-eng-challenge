@@ -136,7 +136,7 @@ export default {
 }
 
 .waste-entries {
-  color: initial;
+  color: color-get(black);
   & > *:not(:last-child) {
     margin-bottom: sp(5);
   }
