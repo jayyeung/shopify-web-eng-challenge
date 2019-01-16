@@ -1,7 +1,9 @@
 # Shopify Web Engineer Challenge - Summer 2019
 
 Build a web app to search for waste items using the Toronto Waste Wizard database, and save frequently used ones.
+
 **Live App:** https://jayyeung.github.io/shopify-web-eng-challenge/
+
 **Codebase:** https://github.com/jayyeung/shopify-web-eng-challenge
 
 ## Project setup
