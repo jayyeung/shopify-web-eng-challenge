@@ -1,11 +1,15 @@
 $base-font-size: 30px; 
 $line-height: 1.2;
 
-// resScale: determines what font-size should be at a given width
+// No idea what the actual font is (maybe it's b/c I'm on Windows?)
+$font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; 
+
+// resScale
+// responsive typography -- font-size @ given breakpoint
 $resScale: (
     300px: 14px,
     1024px: 20px,
-    1600px: $base-font-size
+    1690px: $base-font-size
 );
 
 // Helper func for responsive type
