@@ -1,8 +1,8 @@
 <template>
   <form class="searchbar" @submit.prevent="onSearch">
     <input class="searchbar__input u-mr-3" 
-      type="text" v-model="searchInput"
-      placeholder="Type something"/>
+      type="text" v-model="searchInput" 
+      :placeholder="placeholder" :disabled="disabled"/>
       
     <button class="searchbar__button" type="submit">
       <img src="../assets/icon-search.svg"/>
@@ -13,6 +13,10 @@
 <script>
 export default {
   name: "Searchbar",
+  props: { 
+    disabled: Boolean,
+    placeholder: String
+  },
   data: function() {
     return {
       searchInput: ""
@@ -21,6 +25,7 @@ export default {
 
   methods: {
     onSearch() {
+      if (this.disabled) return;
       this.$emit("search", this.formatedInput);
     }
   },

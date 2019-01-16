@@ -5,7 +5,13 @@
     <!-- Main Section -->
     <div id="main" class="u-mb-5">
       <searchbar class="u-mt-3 u-mb-4"
-        @search="handleSearch"/>
+        placeholder="Lookup waste (E.g. 'cardboard', 'takeout')"
+        @search="handleSearch" :disabled="!loaded"/>
+
+      <div v-if="!loaded">LOADING...</div>
+      <div v-show="query && searchRes.length<=0">
+        No results found for "{{ query }}"
+      </div>
 
       <div class="waste-entries">
         <waste-entry 
@@ -20,6 +26,9 @@
     <div id="faves">
       <div class="o-container">
         <h2>Favourites</h2>
+        <p v-if="favourites.length<=0">
+          You have no favourites :(
+        </p>
 
         <div class="waste-entries u-mt-4">
           <waste-entry
@@ -52,7 +61,7 @@ export default {
       query: "",
       apiData: [],
       searchRes: [],
-      favourites: []
+      favourites: [],
     };
   },
 
