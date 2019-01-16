@@ -5,7 +5,7 @@
       :placeholder="placeholder" :disabled="disabled"/>
       
     <button class="searchbar__button" type="submit">
-      <img src="../assets/icon-search.svg"/>
+      <span class="o-icon-search"></span>
     </button>
   </form>
 </template>
@@ -52,8 +52,6 @@ export default {
 .searchbar {
   display: flex;
   &__input { flex: 1; }
-  &__button {
-    img { width: $baseline * 17; }
-  }
+  &__button { padding: sp(1); }
 }
 </style>

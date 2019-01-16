@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'icons';
+    src:  url('assets/icons.eot?m6y9ln');
+    src:  url('assets/icons.eot?m6y9ln#iefix') format('embedded-opentype'),
+      url('assets/icons.ttf?m6y9ln') format('truetype'),
+      url('assets/icons.woff?m6y9ln') format('woff'),
+      url('assets/icons.svg?m6y9ln#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+[class^="o-icon-"], [class*="o-icon-"] {
+    font-family: 'icons' !important;
+    speak: none;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.o-icon-search:before { content: "\e900"; font-size: 2.5rem; }
+.o-icon-star:before { content: "\e901"; }
+  
