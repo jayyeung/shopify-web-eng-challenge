@@ -26,12 +26,12 @@ export default {
   methods: {
     onSearch() {
       if (this.disabled) return;
-      this.$emit("search", this.formatedInput);
+      this.$emit("search", this.formattedInput);
     }
   },
 
   computed: {
-    formatedInput() {
+    formattedInput() {
       return this.searchInput.trim().toLowerCase();
     }
   },
