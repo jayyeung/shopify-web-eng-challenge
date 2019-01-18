@@ -8,6 +8,9 @@ Build a web app to search for waste items using the Toronto Waste Wizard databas
 
 **Codebase:** https://github.com/jayyeung/shopify-web-eng-challenge
 
+## Mockup
+![Design](http://cdn.shopify.com/static/web-eng-challenge-summer-2019/design.png)
+
 ## Project setup
 ```
 npm install
@@ -27,7 +30,6 @@ npm run build
 Below are some of my thoughts when doing this challenge:
 
 ## Functionality
----
 Simply, the app will initially prefetch the data and will filter out the results when the user searches.
 When a user favourites an entry, the `waste-entry` component will emit a callback to the parent component, which will handle the favouriting and update the list.
 
@@ -38,7 +40,6 @@ I found two ways to get the data: either prefetch the data or fetch it when the 
 At first, when displaying the description of each entry, I couldn't get it to render properly. After some more research, I later found out that 
 
 ## Design
----
 It was very important for me to recreate the app as close to the design mockup as possible. Imagine a designer who've taken their time painstakenly crafting the UI only to end up with something completely different!
 
 **Style organization:**
