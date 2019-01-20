@@ -49,3 +49,5 @@ For more global styles, I grouped them into "modules" (in the `styles` folder) t
 **Spacing:** 
 Measuring the mockup up in Photoshop, I noticed that spacing between elements and line-height were roughly multiples of 4; I simplifed the spacing into spacers of **4, 20, 28, 40, and 80px**, and created a file `styles/settings/_spacing.scss` that will generate re-usable classes based on these spacers.
 
+**Responsiveness**
+A problem that I used to have when coding websites was responsive text. Normally you would use manual breakpoints to change the font-size, but that results in awkard type sizes on devices that hover but don't pass these breakpoints. Ever since, I've been using a technique with `calc()` and viewport units to linearly interpolate the sizes between breakpoints that I used in `styles/settings/_type.scss`.
