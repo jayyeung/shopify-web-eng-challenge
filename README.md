@@ -4,9 +4,9 @@ Build a web app to search for waste items using the Toronto Waste Wizard databas
 
 **Challenge:** https://cdn.shopify.com/static/web-eng-challenge-summer-2019/index.md
 
-**Live App:** https://jayyeung.github.io/shopify-web-eng-challenge/
+**Live App:** https://jayyeung.github.io/shopify-web-eng-challenge-summer-2019/
 
-**Codebase:** https://github.com/jayyeung/shopify-web-eng-challenge
+**Codebase:** https://github.com/jayyeung/shopify-web-eng-challenge-summer-2019
 
 ## Mockup
 ![Design](http://cdn.shopify.com/static/web-eng-challenge-summer-2019/design.png)
